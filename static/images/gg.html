@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function ()
+{
+    var oc = document.getElementById('c1');
+    var ogc = oc.getContext('2d');
+    
+    var yimg = new Image();
+    yimg.onload = function ()
+    {
+        draw(this);
+    }
+    yimg.src = 'banner.jpg';
+    
+    function draw(obj)
+    {
+        oc.width = obj.width;
+        oc.height = obj.height*2;
+        
+        ogc.drawImage(obj,0,0);
+        var oimg = ogc.getImageData(0,0,obj.width,obj.height);
+        var w = oimg.width;
+        var h = oimg.height;
+        
+        for(var i = 0; i < h; i++)
+        {
+            for(var j = 0; j < w; j++)
+            {
+                var color = getXY(oimg,j,i)
+                var result = [];
+                result[0] = 255 - color[0];
+                result[1] = 255 - color[1];
+                result[2] = 255 - color[2];
+                result[3] = 255;
+                
+                setXY(oimg,j,i,result);
+            }
+        }
+        
+        ogc.putImageData(oimg,0,obj.height);
+    }
+    
+    function getXY(obj,x,y)
+    {
+        var w = obj.width;
+        var h = obj.height;
+        var d = obj.data;
+        
+        var color = [];
+        
+        color[0] = d[ 4*(y*w+x)];
+        color[1] = d[ 4*(y*w+x) +1];
+        color[2] = d[ 4*(y*w+x) +2];
+        color[3] = d[ 4*(y*w+x) +3];
+        
+        return color;
+    }
+    
+    
+    function setXY(obj,x,y,color)
+    {
+        var w = obj.width;
+        var h = obj.height;
+        var d = obj.data;
+        
+        d[ 4*(y*w+x)] = color[0];
+        d[ 4*(y*w+x) +1] = color[1];
+        d[ 4*(y*w+x) +2] = color[2];
+        d[ 4*(y*w+x) +3] = color[3];
+        
+    }
+}
+</script>
+<style>
+body{
+    background:pink;
+    }
+#c1{
+    background:white;
+    }    
+</style>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="800"></canvas>
+</body>
+</html>

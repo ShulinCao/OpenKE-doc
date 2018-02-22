@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?59e40f1f1f246339224e645ee15fbf10";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <!-- Website Information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="An Open-source Framework for Knowledge Embedding.">
+    <meta name="author" content="THUNLP">
+    <!-- Website Title -->
+    <title>OpenKE - An Open-source Framework for Knowledge Embedding.</title>
+
+    <link href="{{{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}}}" rel="stylesheet">
+    <link href="{{{{url_for('static', filename='css/blog-post.css')}}}}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">OpenKE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/index/toolkits">Downloads</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/index/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/static/index.html" target="_blank">Documents</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://github.com/thunlp/OpenKE" target="_Blank">Github</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <div style="padding:50px;position:relative;">
+          <div class="container-fluid">
+            <h1>Downloads</h1>
+              <hr/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+                        <p style="font-size:20px;font-weight:300;">Knowledge Graphs and Embeddings: </p>
+                        <br/>
+                        <table class="table table-striped table-hover ">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">Knowledge Graph</th>
+                                    <th style="text-align:center;">Description</th>
+                                    <th style="text-align:center;">Size</th>
+                                    <th style="text-align:center;">Download</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align:center;">
+                                <tr>
+                                    <td id="pretrained-wikidata" rowspan="5" alignment="center" style="vertical-align:middle;">Wikidata</td>
+                                    <td>Embeddings of the entities</td>
+                                    <td> > 4GB </td>
+                                    <td rowspan="5" alignment="center" style="vertical-align:middle;">
+                                        <a href = "https://pan.baidu.com/s/1eRBkUlG">
+                                            Download
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> Embeddings of the relations </td>
+                                    <td alignment="left"> < 1MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the entity ids </td>
+                                    <td alignment="left"> 360MB</td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the relation ids </td>
+                                    <td alignment="left"> < 1MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the triple ids </td>
+                                    <td alignment="left"> 1GB </td>
+                                </tr>
+
+                                <tr>
+                                    <td id="pretrained-freebase" rowspan="5" alignment="center" style="vertical-align:middle;">Freebase</td>
+                                    <td>Embeddings of the entities</td>
+                                    <td> > 15GB </td>
+                                    <td rowspan="5" alignment="center" style="vertical-align:middle;">
+                                        <a href = "https://pan.baidu.com/s/1sl8wUnz">
+                                            Download
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> Embeddings of the relations </td>
+                                    <td alignment="left"> < 10MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the entity ids </td>
+                                    <td alignment="left"> 1.5GB</td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the relation ids </td>
+                                    <td alignment="left"> < 1MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the triple ids </td>
+                                    <td alignment="left"> 6GB </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+        </div>
+        <div class="col-lg-6">
+            <p style="font-size:20px;font-weight:300;">Toolkits: </p>
+            <br/>
+              <table class="table table-striped table-hover ">
+                  <thead>
+                      <tr>
+                                    <th style="text-align:center;">Toolkit</th>
+                                    <th style="text-align:center;">Interface</th>
+                                    <th style="text-align:center;">Model</th>
+                                    <th style="text-align:center;">Download</th>
+                      </tr>
+                  </thead>
+                  <tbody style="text-align:center;">
+                      <tr>
+                        <td>OpenKE</td>
+                        <td>Python</td>
+                        <td>RESCAL, TransE, DistMult, TransH, TransR, TransD, HolE, ComplEx</td>
+                        <td><a href="https://github.com/thunlp/OpenKE" target="_blank">Download</a></td>
+                      </tr>
+                      <tr>
+                        <td>TensorFlow-TransX</td>
+                        <td>Python</td>
+                        <td>TransE, TransH, TransR, TransD</td>
+                        <td><a href="https://github.com/thunlp/TensorFlow-TransX" target="_blank">Download</a></td>
+                      </tr>
+                      <tr>
+                        <td>KB2E</td>
+                        <td>C/C++</td>
+                        <td>TransE, TransH, TransR, PTransE</td>
+                        <td><a href="https://github.com/thunlp/KB2E" target="_blank">Download</a></td>
+                      </tr>
+                      <tr>
+                        <td>Fast-TransX</td>
+                        <td>C/C++</td>
+                        <td>TransE, TransH, TransR, TransD, PTransE, TranSparse</td>
+                        <td><a href="https://github.com/thunlp/Fast-TransX" target="_blank">Download</a></td>
+                      </tr>
+                  <tbody>
+              </table>
+            <br/>
+        </div>
+      </div>
+    </div>
+    <br/>
+
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">&copy; 2017. <a href="http://thunlp.org/site2/index.php/zh" target="_Blank">THUNLP</a> All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="{{{{url_for('static', filename='jquery/jquery.min.js')}}}}"></script>
+    <script src="{{{{url_for('static', filename='popper/popper.min.js')}}}}"></script>
+    <script src="{{{{url_for('static', filename='bootstrap/js/bootstrap.min.js')}}}}"></script>
+  </body>
+</html>

@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>config.Config &mdash; OpenKE  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/pytorch_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="OpenKE  documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/OpenKE-logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/data.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/train.html">How to Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-1-import-datasets">Step 1: Import Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-2-set-configure-parameters">Step 2: Set Configure Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-3-export-results">Step 3: Export Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-4-train-models">Step 4: Train Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/test.html">How to Test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/test.html#load-models-from-import-files">Load Models from Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/test.html#read-model-parameters-from-json-files">Read Model Parameters from Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/test.html#manually-load-models">Manually Load Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/matrix.html">How to Get Embedding Matrix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#set-import-files">Set Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#read-parameters-from-json-files">Read Parameters From Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#manually-load-models-parameters">Manually Load Models Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#get-the-embeddings-after-training">Get the Embeddings After Training</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pt/config.html">Config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#getting-statistics-of-dataset">Getting Statistics of Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#setting-configuration-parameters">Setting Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#setting-inpath-and-outpath">Setting Inpath and Outpath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#saving-and-loading-models">Saving and Loading Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#setting-models">Setting Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#training-models">Training Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#testing-models">Testing Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pt/model.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#base-model">Base Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transe">TransE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transh">TransH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transr">TransR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transd">TransD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#rescal">RESCAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#distmult">DistMult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#complex">ComplEx</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenKE</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>config.Config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for config.Config</h1><div class="highlight"><pre>
+<span></span><span class="c1">#coding:utf-8</span>
+<span class="kn">import</span> <span class="nn">torch</span> 
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="k">import</span> <span class="n">Variable</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<div class="viewcode-block" id="Config"><a class="viewcode-back" href="../../pt/config.html#config.Config">[docs]</a><span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sa">r</span><span class="sd">&quot;&quot;&quot;In this class, we set the configuration parameters, adopt C library for data and memory processing. In the following,</span>
+<span class="sd">	we train models and test models.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cdll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="s2">&quot;./release/Base.so&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">sampling</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int64</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int64</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int64</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getHeadBatch</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getTailBatch</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">testHead</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">testTail</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">test_flag</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">in_path</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">out_path</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">bern</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">100</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">ent_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">rel_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">train_times</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="mf">1.0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">nbatches</span> <span class="o">=</span> <span class="mi">100</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">workThreads</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.001</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lmbda</span> <span class="o">=</span> <span class="mf">0.000</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">log_on</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lr_decay</span><span class="o">=</span><span class="mf">0.000</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">weight_decay</span><span class="o">=</span><span class="mf">0.000</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">exportName</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">importName</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">export_steps</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">=</span> <span class="s2">&quot;SGD&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="kc">None</span>
+
+	<span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_path</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">setInPath</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_path</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_path</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">setBern</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bern</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">setWorkThreads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workThreads</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">randReset</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">importTrainFiles</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relTotal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getRelationTotal</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">entTotal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getEntityTotal</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">trainTotal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getTrainTotal</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getTrainTotal</span><span class="p">()</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbatches</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_seq_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_h_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_h</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_t_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_t</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_r_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_r</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">batch_y_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_y</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_flag</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">importTestFiles</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">test_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getEntityTotal</span><span class="p">(),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">test_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getEntityTotal</span><span class="p">(),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">test_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getEntityTotal</span><span class="p">(),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">test_h_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_h</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">test_t_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_t</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">test_r_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_r</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Config.get_ent_total"><a class="viewcode-back" href="../../pt/config.html#config.Config.get_ent_total">[docs]</a>	<span class="k">def</span> <span class="nf">get_ent_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method gets the entity total of knowledge base.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">entTotal</span></div>
+
+<div class="viewcode-block" id="Config.get_rel_total"><a class="viewcode-back" href="../../pt/config.html#config.Config.get_rel_total">[docs]</a>	<span class="k">def</span> <span class="nf">get_rel_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot; This method gets the relation total of knowledge base.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">relTotal</span></div>
+
+	<span class="k">def</span> <span class="nf">set_lmbda</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lmbda</span><span class="p">):</span>
+		
+		<span class="bp">self</span><span class="o">.</span><span class="n">lmbda</span> <span class="o">=</span> <span class="n">lmbda</span>
+
+<div class="viewcode-block" id="Config.set_opt_method"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_opt_method">[docs]</a>	<span class="k">def</span> <span class="nf">set_opt_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the optimizer for your model.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">		    optimizer: ``SGD`` ``Adagrad`` ``Adam`` and ``Adadelta`` can be chosen for optimizing.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">=</span> <span class="n">method</span></div>
+
+<div class="viewcode-block" id="Config.set_test_flag"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_test_flag">[docs]</a>	<span class="k">def</span> <span class="nf">set_test_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets whether we test our model.</span>
+<span class="sd">		</span>
+<span class="sd">		Arguments:</span>
+<span class="sd">		    flag (bool): if True, we test the model.</span>
+
+<span class="sd">		.. note:: Note that test_flag must  be set **after** all the other configuration parameters are set.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">test_flag</span> <span class="o">=</span> <span class="n">flag</span></div>
+
+<div class="viewcode-block" id="Config.set_log_on"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_log_on">[docs]</a>	<span class="k">def</span> <span class="nf">set_log_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets whether to log on the loss value.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">		    flag (bool): if True, logs on the loss value when training.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">log_on</span> <span class="o">=</span> <span class="n">flag</span></div>
+
+<div class="viewcode-block" id="Config.set_alpha"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_alpha">[docs]</a>	<span class="k">def</span> <span class="nf">set_alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This mothod sets the learning rate for gradient descent.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			alpha (float): the learning rate.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span></div>
+
+<div class="viewcode-block" id="Config.set_in_path"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_in_path">[docs]</a>	<span class="k">def</span> <span class="nf">set_in_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the path of benchmark.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">in_path</span> <span class="o">=</span> <span class="n">path</span></div>
+
+<div class="viewcode-block" id="Config.set_out_files"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_out_files">[docs]</a>	<span class="k">def</span> <span class="nf">set_out_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets where to emport embedding matrix.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">out_path</span> <span class="o">=</span> <span class="n">path</span></div>
+
+<div class="viewcode-block" id="Config.set_bern"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_bern">[docs]</a>	<span class="k">def</span> <span class="nf">set_bern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bern</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the strategy for negative sampling.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			bern: &quot;bern&quot; or &quot;unif&quot;</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">bern</span> <span class="o">=</span> <span class="n">bern</span></div>
+
+<div class="viewcode-block" id="Config.set_dimension"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_dimension">[docs]</a>	<span class="k">def</span> <span class="nf">set_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the entity dimension and  relation dimension at the same time.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			dim (int): the dimension of entity and relation.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">dim</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">ent_size</span> <span class="o">=</span> <span class="n">dim</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">rel_size</span> <span class="o">=</span> <span class="n">dim</span></div>
+
+<div class="viewcode-block" id="Config.set_ent_dimension"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_ent_dimension">[docs]</a>	<span class="k">def</span> <span class="nf">set_ent_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the dimension of entity.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			dim (int): the dimension of entity.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">ent_size</span> <span class="o">=</span> <span class="n">dim</span></div>
+
+<div class="viewcode-block" id="Config.set_rel_dimension"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_rel_dimension">[docs]</a>	<span class="k">def</span> <span class="nf">set_rel_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the dimension of relation.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			dim (int): the dimension of relation.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">rel_size</span> <span class="o">=</span> <span class="n">dim</span></div>
+
+<div class="viewcode-block" id="Config.set_train_times"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_train_times">[docs]</a>	<span class="k">def</span> <span class="nf">set_train_times</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the rounds for training.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			times (int): rounds for training.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">train_times</span> <span class="o">=</span> <span class="n">times</span></div>
+	
+<div class="viewcode-block" id="Config.set_nbatches"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_nbatches">[docs]</a>	<span class="k">def</span> <span class="nf">set_nbatches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbatches</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the number of batch.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			nbatches (int): number of batch.</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">nbatches</span> <span class="o">=</span> <span class="n">nbatches</span></div>
+	
+<div class="viewcode-block" id="Config.set_margin"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_margin">[docs]</a>	<span class="k">def</span> <span class="nf">set_margin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the margin for the widely used pairwise margin-based ranking loss.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			margin (float): margin for margin-based ranking function</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">margin</span></div>
+	
+<div class="viewcode-block" id="Config.set_work_threads"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_work_threads">[docs]</a>	<span class="k">def</span> <span class="nf">set_work_threads</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threads</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;We can use multi-threading trainning for accelaration. This method sets the numebr of threads.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			threads (int): number of working threads.</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">workThreads</span> <span class="o">=</span> <span class="n">threads</span></div>
+	
+<div class="viewcode-block" id="Config.set_ent_neg_rate"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_ent_neg_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_ent_neg_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;the number of negatives generated per positive training sample influnces the experiment results.</span>
+<span class="sd">		This method sets the number of negative entities constructed per positive sample.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			rate (int): the number of negative entities per positive sample.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span> <span class="o">=</span> <span class="n">rate</span></div>
+	
+<div class="viewcode-block" id="Config.set_rel_neg_rate"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_rel_neg_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_rel_neg_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the number of negative relations per positive sample.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			rate (int): the number of negative relations per positive sample.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span> <span class="o">=</span> <span class="n">rate</span></div>
+	
+<div class="viewcode-block" id="Config.set_import_files"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_import_files">[docs]</a>	<span class="k">def</span> <span class="nf">set_import_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;Model paramters are exported automatically every few rounds. </span>
+<span class="sd">		This method sets the path to find exported model parameters.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			path: path to automatically exported model parameters.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">importName</span> <span class="o">=</span> <span class="n">path</span></div>
+	
+<div class="viewcode-block" id="Config.set_export_files"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_export_files">[docs]</a>	<span class="k">def</span> <span class="nf">set_export_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;Model parameters will be exported to this path automatically.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			path: files that model parameters will be exported to. </span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">exportName</span> <span class="o">=</span> <span class="n">path</span></div>
+	
+<div class="viewcode-block" id="Config.set_export_steps"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_export_steps">[docs]</a>	<span class="k">def</span> <span class="nf">set_export_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot; This method sets that every few steps the model paramters will be exported automatically.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			steps (int): Models will be exported via torch.save() automatically every few rounds</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">export_steps</span> <span class="o">=</span> <span class="n">steps</span></div>
+	
+<div class="viewcode-block" id="Config.set_lr_decay"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_lr_decay">[docs]</a>	<span class="k">def</span> <span class="nf">set_lr_decay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">lr_decay</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the learning rate decay for ``Adagrad`` optim method.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">		    lr_decay (float): learning rate decay </span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lr_decay</span><span class="o">=</span><span class="n">lr_decay</span></div>
+	
+<div class="viewcode-block" id="Config.set_weight_decay"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_weight_decay">[docs]</a>	<span class="k">def</span> <span class="nf">set_weight_decay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">weight_decay</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the weight decay for ``Adagrad`` optim method.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">		    weight_decay (float): weight decay  for ``Adagrad``.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span></div>
+	
+<div class="viewcode-block" id="Config.sampling"><a class="viewcode-back" href="../../pt/config.html#config.Config.sampling">[docs]</a>	<span class="k">def</span> <span class="nf">sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;In this function, we choose positive samples and construct negative samples.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_h_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_t_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_r_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_y_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_ent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_rel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Config.save_pytorch"><a class="viewcode-back" href="../../pt/config.html#config.Config.save_pytorch">[docs]</a>	<span class="k">def</span> <span class="nf">save_pytorch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method saves the model paramters to ``self.exportName`` which was set by :func:`set_export_files`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">exportName</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Config.restore_pytorch"><a class="viewcode-back" href="../../pt/config.html#config.Config.restore_pytorch">[docs]</a>	<span class="k">def</span> <span class="nf">restore_pytorch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method restore model through ``torch.load``</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">importName</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Config.export_variables"><a class="viewcode-back" href="../../pt/config.html#config.Config.export_variables">[docs]</a>	<span class="k">def</span> <span class="nf">export_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method export model paramters through ``torch.save``.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			path: If None, this function euquals to :func:`save_pytorch`, else save paramters to ``path``</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">exportName</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Config.import_variables"><a class="viewcode-back" href="../../pt/config.html#config.Config.import_variables">[docs]</a>	<span class="k">def</span> <span class="nf">import_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method export model paramters through ``torch.load``.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			path: If None, this function euquals to :func:`restore_pytorch`, else save paramters to ``path``</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">importName</span><span class="p">))</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
+
+	<span class="k">def</span> <span class="nf">get_parameter_lists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+
+	<span class="k">def</span> <span class="nf">get_parameters_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_name</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Config.get_parameters"><a class="viewcode-back" href="../../pt/config.html#config.Config.get_parameters">[docs]</a>	<span class="k">def</span> <span class="nf">get_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;numpy&quot;</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method gets the model paramters.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			mode: if ``numpy``, returns model parameters as numpy array, if ``list``, returns those as list</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="n">lists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter_lists</span><span class="p">()</span>
+		<span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;numpy&quot;</span><span class="p">:</span>
+				<span class="n">res</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">lists</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+			<span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;list&quot;</span><span class="p">:</span>
+				<span class="n">res</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">lists</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">res</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">lists</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="Config.save_parameters"><a class="viewcode-back" href="../../pt/config.html#config.Config.save_parameters">[docs]</a>	<span class="k">def</span> <span class="nf">save_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method save model parameters as json files when training finished.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			path: if None, save parameters to ``self.out_path`` which was set by :func:`set_out_files`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_path</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+		<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">(</span><span class="s2">&quot;list&quot;</span><span class="p">)))</span>
+		<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+	<span class="k">def</span> <span class="nf">set_parameters_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_name</span><span class="p">,</span> <span class="n">tensor</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tensor</span><span class="p">)))</span>
+
+	<span class="k">def</span> <span class="nf">set_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lists</span><span class="p">):</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">set_parameters_by_name</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lists</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<div class="viewcode-block" id="Config.set_model"><a class="viewcode-back" href="../../pt/config.html#config.Config.set_model">[docs]</a>	<span class="k">def</span> <span class="nf">set_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method sets the traing model and optimizer method.</span>
+
+<span class="sd">		Arguments:</span>
+<span class="sd">			model: training model. We can choose from :class:``models.TransE`` :class:``models.TransH`` :class:``models.TransR`` :class:``models.TransD`` :class:``models.RESCAL`` :class:``models.DistMult`` and :class:``models.ComplEx``</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="k">pass</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">==</span> <span class="s2">&quot;Adagrad&quot;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">==</span> <span class="s2">&quot;adagrad&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span><span class="n">lr_decay</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lr_decay</span><span class="p">,</span><span class="n">weight_decay</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weight_decay</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">==</span> <span class="s2">&quot;Adadelta&quot;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">==</span> <span class="s2">&quot;adadelta&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adadelta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">==</span> <span class="s2">&quot;Adam&quot;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_method</span> <span class="o">==</span> <span class="s2">&quot;adam&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Config.run"><a class="viewcode-back" href="../../pt/config.html#config.Config.run">[docs]</a>	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;In this function, we train the model&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">importName</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">restore_pytorch</span><span class="p">()</span>
+		<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_times</span><span class="p">):</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="mf">0.0</span>
+			<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nbatches</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">sampling</span><span class="p">()</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+				<span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="p">()</span>
+				<span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">+</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+				<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exportName</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">export_steps</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">epoch</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">export_steps</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">save_pytorch</span><span class="p">()</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_on</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="nb">print</span> <span class="n">epoch</span>
+				<span class="nb">print</span> <span class="n">res</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exportName</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">save_pytorch</span><span class="p">()</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_path</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">save_parameters</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Config.test"><a class="viewcode-back" href="../../pt/config.html#config.Config.test">[docs]</a>	<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;In this function, we test the model.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">importName</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">restore_pytorch</span><span class="p">()</span>
+		<span class="c1">#self.trainModel.cuda()</span>
+		<span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getTestTotal</span><span class="p">()</span>
+		<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getHeadBatch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_h_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_t_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_r_addr</span><span class="p">)</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_r</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">testHead</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">getTailBatch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_h_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_t_addr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_r_addr</span><span class="p">)</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainModel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_r</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">testTail</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_on</span><span class="p">:</span>
+				<span class="nb">print</span> <span class="n">epoch</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">test</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, OpenKE Contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90545585-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

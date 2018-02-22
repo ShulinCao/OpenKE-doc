@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>models.Model &mdash; OpenKE  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/pytorch_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="OpenKE  documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/OpenKE-logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/data.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/train.html">How to Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-1-import-datasets">Step 1: Import Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-2-set-configure-parameters">Step 2: Set Configure Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-3-export-results">Step 3: Export Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/train.html#step-4-train-models">Step 4: Train Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/test.html">How to Test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/test.html#load-models-from-import-files">Load Models from Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/test.html#read-model-parameters-from-json-files">Read Model Parameters from Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/test.html#manually-load-models">Manually Load Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/matrix.html">How to Get Embedding Matrix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#set-import-files">Set Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#read-parameters-from-json-files">Read Parameters From Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#manually-load-models-parameters">Manually Load Models Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/matrix.html#get-the-embeddings-after-training">Get the Embeddings After Training</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pt/config.html">Config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#getting-statistics-of-dataset">Getting Statistics of Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#setting-configuration-parameters">Setting Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#setting-inpath-and-outpath">Setting Inpath and Outpath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#saving-and-loading-models">Saving and Loading Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#setting-models">Setting Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#training-models">Training Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/config.html#testing-models">Testing Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pt/model.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#base-model">Base Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transe">TransE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transh">TransH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transr">TransR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#transd">TransD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#rescal">RESCAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#distmult">DistMult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pt/model.html#complex">ComplEx</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenKE</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>models.Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for models.Model</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.autograd</span> <span class="k">as</span> <span class="nn">autograd</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="k">import</span> <span class="n">Variable</span>
+
+<div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../pt/model.html#models.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+	<span class="sa">r</span><span class="sd">&quot;&quot;&quot;The base model for knowledge embedding</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        config: the instance of class :class:`config.Config.Config`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">config</span><span class="p">):</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+
+<div class="viewcode-block" id="Model.get_postive_instance"><a class="viewcode-back" href="../../pt/model.html#models.Model.get_postive_instance">[docs]</a>	<span class="k">def</span> <span class="nf">get_postive_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method gets the positive samples from batch</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			list: [self.postive_h, self.postive_t,self.positive_r], the shape is [batch_size]</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">postive_h</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_h</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_size</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">postive_t</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_t</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_size</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">postive_r</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_r</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_size</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">postive_h</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">postive_t</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">postive_r</span></div>
+
+<div class="viewcode-block" id="Model.get_negtive_instance"><a class="viewcode-back" href="../../pt/model.html#models.Model.get_negtive_instance">[docs]</a>	<span class="k">def</span> <span class="nf">get_negtive_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method gets the negative samples through negative sampling</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			list: [self.negtive_h, self.negtive_t,self.negitive_r], the shape is [batch_size]</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negtive_h</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_seq_size</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negtive_t</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_t</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_seq_size</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">negtive_r</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_r</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_seq_size</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">negtive_h</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">negtive_t</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">negtive_r</span></div>
+
+<div class="viewcode-block" id="Model.get_all_instance"><a class="viewcode-back" href="../../pt/model.html#models.Model.get_all_instance">[docs]</a>	<span class="k">def</span> <span class="nf">get_all_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method gets all samples from batch, including positive samples and negative samples</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			list: [self.batch_h, self.batch_t, self.batch_y], the shape is [batch_size * (1 + negative_ent + negative_rel)]</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">batch_h</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_h</span><span class="p">))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">batch_t</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_t</span><span class="p">))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">batch_r</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_r</span><span class="p">))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_r</span></div>
+
+<div class="viewcode-block" id="Model.get_all_labels"><a class="viewcode-back" href="../../pt/model.html#models.Model.get_all_labels">[docs]</a>	<span class="k">def</span> <span class="nf">get_all_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sa">r</span><span class="sd">&quot;&quot;&quot;This method gets all labels for the samples, ``1`` for positive triples and ``-1`` for negative triples</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			Variable: self.batch_y, the shape is [batch_size * (1 + negative_ent + negative_rel)]</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">batch_y</span><span class="o">=</span><span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">batch_y</span><span class="p">))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_y</span></div>
+
+	<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">pass</span>
+
+	<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">pass</span>
+
+	<span class="k">def</span> <span class="nf">loss_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">pass</span></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, OpenKE Contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90545585-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

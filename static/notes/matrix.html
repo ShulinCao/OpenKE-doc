@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Get Embedding Matrix &mdash; OpenKE  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pytorch_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OpenKE  documentation" href="../index.html"/>
+        <link rel="next" title="Config" href="../pt/config.html"/>
+        <link rel="prev" title="How to Test" href="test.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/OpenKE-logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="train.html">How to Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="train.html#step-1-import-datasets">Step 1: Import Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="train.html#step-2-set-configure-parameters">Step 2: Set Configure Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="train.html#step-3-export-results">Step 3: Export Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="train.html#step-4-train-models">Step 4: Train Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">How to Test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="test.html#load-models-from-import-files">Load Models from Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test.html#read-model-parameters-from-json-files">Read Model Parameters from Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test.html#manually-load-models">Manually Load Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Get Embedding Matrix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#set-import-files">Set Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read-parameters-from-json-files">Read Parameters From Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manually-load-models-parameters">Manually Load Models Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-the-embeddings-after-training">Get the Embeddings After Training</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pt/config.html">Config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#getting-statistics-of-dataset">Getting Statistics of Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#setting-configuration-parameters">Setting Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#setting-inpath-and-outpath">Setting Inpath and Outpath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#saving-and-loading-models">Saving and Loading Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#setting-models">Setting Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#training-models">Training Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/config.html#testing-models">Testing Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/model.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#base-model">Base Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#transe">TransE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#transh">TransH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#transr">TransR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#transd">TransD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#rescal">RESCAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#distmult">DistMult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pt/model.html#complex">ComplEx</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenKE</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>How to Get Embedding Matrix</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/notes/matrix.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-get-embedding-matrix">
+<h1>How to Get Embedding Matrix<a class="headerlink" href="#how-to-get-embedding-matrix" title="Permalink to this headline">¶</a></h1>
+<p>There are four approaches to get the embedding matrix.</p>
+<div class="section" id="set-import-files">
+<h2>Set Import Files<a class="headerlink" href="#set-import-files" title="Permalink to this headline">¶</a></h2>
+<p>Set import files and OpenKE will automatically load models via torch.load():</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">py</span>
+
+<span class="kn">import</span> <span class="nn">config</span>
+<span class="kn">import</span> <span class="nn">models</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_in_path</span><span class="p">(</span><span class="s2">&quot;./benchmarks/FB15K/&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_test_flag</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_work_threads</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_import_files</span><span class="p">(</span><span class="s2">&quot;./res/model.vec.pt&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_model</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TransE</span><span class="p">)</span>
+<span class="c1"># Get the embeddings (numpy.array)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">(</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="c1"># Get the embeddings (python list)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-parameters-from-json-files">
+<h2>Read Parameters From Json Files<a class="headerlink" href="#read-parameters-from-json-files" title="Permalink to this headline">¶</a></h2>
+<p>Read model parameters from json files and manually load parameters:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">py</span>
+<span class="kn">import</span> <span class="nn">config</span>
+<span class="kn">import</span> <span class="nn">models</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_in_path</span><span class="p">(</span><span class="s2">&quot;./benchmarks/FB15K/&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_test_flag</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_work_threads</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_model</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TransE</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./res/embedding.vec.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manually-load-models-parameters">
+<h2>Manually Load Models Parameters<a class="headerlink" href="#manually-load-models-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Manually load models via <code class="docutils literal"><span class="pre">torch.load()</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">con</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_in_path</span><span class="p">(</span><span class="s2">&quot;./benchmarks/FB15K/&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_test_flag</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_work_threads</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_model</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TransE</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">import_variables</span><span class="p">(</span><span class="s2">&quot;./res/model.vec.pt&quot;</span><span class="p">)</span>
+<span class="c1"># Get the embeddings (numpy.array)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">(</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="c1"># Get the embeddings (python list)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-the-embeddings-after-training">
+<h2>Get the Embeddings After Training<a class="headerlink" href="#get-the-embeddings-after-training" title="Permalink to this headline">¶</a></h2>
+<p>Immediately get the embeddings after training the model:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="c1">#Models will be exported via tf.Saver() automatically.</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_export_files</span><span class="p">(</span><span class="s2">&quot;./res/model.vec.pt&quot;</span><span class="p">)</span>
+<span class="c1">#Model parameters will be exported to json files automatically.</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_out_files</span><span class="p">(</span><span class="s2">&quot;./res/embedding.vec.json&quot;</span><span class="p">)</span>
+<span class="c1">#Initialize experimental settings.</span>
+<span class="n">con</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="c1">#Set the knowledge embedding model</span>
+<span class="n">con</span><span class="o">.</span><span class="n">set_model</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TransE</span><span class="p">)</span>
+<span class="c1">#Train the model.</span>
+<span class="n">con</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="c1">#Get the embeddings (numpy.array)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">(</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="c1">#Get the embeddings (python list)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pt/config.html" class="btn btn-neutral float-right" title="Config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="test.html" class="btn btn-neutral" title="How to Test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, OpenKE Contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90545585-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

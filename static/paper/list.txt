@@ -1,0 +1,45 @@
+1
+AAAI
+2015
+Yankai Lin, Zhiyuan Liu, Maosong Sun, Yang Liu, Xuan Zhu
+TransR
+Learning Entity and Relation Embeddings for Knowledge Graph Completion
+Knowledge graph completion aims to perform link prediction between entities. In this paper, we consider the approach of knowledge graph embeddings. Recently, models such as TransE and TransH build entity and relation embeddings by regarding a relation as translation from head entity to tail entity. We note that these models simply put both entities and relations within the same semantic space. In fact, an entity may have multiple aspects and various relations may focus on different aspects of entities, which makes a common space insufficient for modeling. In this paper, we propose TransR to build entity and relation embeddings in separate entity space and relation spaces. Afterwards, we learn embeddings by first projecting entities from entity space to corresponding relation space and then building translations between projected entities. In experiments, we evaluate our models on three tasks including link prediction, triple classification and relational fact extraction. Experimental results show significant and consistent improvements compared to state-of-the-art baselines including TransE and TransH. The source code of this paper can be obtained from https://github.com/mrlyk423/relation_extraction.
+/static/paper/AAAI/AAAI2015_Lin.pdf
+/static/paper/AAAI/AAAI2015_Lin.png
+2
+AAAI
+2016
+Ruobing Xie, Zhiyuan Liu, Jia Jia, Huanbo Luan, Maosong Sun
+DKRL
+Representation Learning of Knowledge Graphs with Entity Descriptions
+Representation learning (RL) of knowledge graphs aims to project both entities and relations into a continuous low-dimensional space. Most methods concentrate on learning representations with knowledge triples indicating relations between entities. In fact, in most knowledge graphs there are usually concise descriptions for entities, which cannot be well utilized by existing methods. In this paper, we propose a novel RL method for knowledge graphs taking advantages of entity descriptions. More specifically, we explore two encoders, including continuous bag-of-words and deep convolutional neural models to encode semantics of entity descriptions. We further learn knowledge representations with both triples and descriptions. We evaluate our method on two tasks, including knowledge graph completion and entity classification. Experimental results on real-world datasets show that, our method outperforms other baselines on the two tasks, especially under the zero-shot setting, which indicates that our method is capable of building representations for novel entities according to their descriptions. The source code of this paper can be obtained from https://github.com/xrb92/DKRL.
+/static/paper/AAAI/AAAI2016_Xie.pdf
+/static/paper/AAAI/AAAI2016_Xie.png
+3
+EMNLP
+2015
+Yankai Lin, Zhiyuan Liu, Huanbo Luan, Maosong Sun, Siwei Rao, Song Liu
+PTransE
+Modeling Relation Paths for Representation Learning of Knowledge Bases
+Representation learning of knowledge bases aims to embed both entities and relations into a low-dimensional space. Most existing methods only consider direct relations in representation learning. We argue that multiple-step relation paths also contain rich inference patterns between entities, and propose a path-based representation learning model. This model considers relation paths as translations between entities for representation learning, and addresses two key challenges: (1) Since not all relation paths are reliable, we design a path-constraint resource allocation algorithm to measure the reliability of relation paths. (2) We represent relation paths via semantic composition of relation embeddings. Experimental results on real-world datasets show that, as compared with baselines, our model achieves significant and consistent improvements on knowledge base completion and relation extraction from text. The source code of this paper can be obtained from https://github.com/mrlyk423/relation_extraction.
+/static/paper/EMNLP/EMNLP2015_Lin.pdf
+/static/paper/EMNLP/EMNLP2015_Lin.png
+4
+IJCAI
+2016
+Yankai Lin, Zhiyuan Liu, Maosong Sun
+KR-EAR
+Knowledge Representation Learning with Entities, Attributes and Relations
+Distributed knowledge representation (KR) encodes both entities and relations in a low-dimensional semantic space, which has significantly promoted the performance of relation extraction and knowledge reasoning. In many knowledge graphs (KG), some relations indicate attributes of entities (attributes) and others indicate relations between entities (relations). Existing KR models regard all relations equally, and usually suffer from poor accuracies when modeling one-to-many and many-to-one relations, mostly composed of attribute. In this paper, we distinguish existing KG-relations into attributes and relations, and propose a new KR model with entities, attributes and relations (KR-EAR). The experiment results show that, by special modeling of attribute, KR-EAR can significantly outperform state-of-the-art KR models in prediction of entities, attributes and relations. The source code of this paper can be obtained from https://github.com/thunlp/KR-EAR.
+/static/paper/IJCAI/IJCAI2016_Lin.pdf
+/static/paper/IJCAI/IJCAI2016_Lin.png
+5
+IJCAI
+2016
+Ruobing Xie, Zhiyuan Liu, Maosong Sun
+TKRL
+Representation Learning of Knowledge Graphs with Hierarchical Types
+Representation learning of knowledge graphs aims to encode both entities and relations into a continuous low-dimensional vector space. Most existing methods only concentrate on learning representations with structured information located in triples, regardless of the rich information located in hierarchical types of entities, which could be collected in most knowledge graphs. In this paper, we propose a novel method named Type-embodied Knowledge Representation Learning (TKRL) to take advantages of hierarchical entity types. We suggest that entities should have multiple representations in different types. More specifically, we consider hierarchical types as projection matrices for entities, with two type encoders designed to model hierarchical structures. Meanwhile, type information is also utilized as relation-specific type constraints. We evaluate our models on two tasks including knowledge graph completion and triple classification, and further explore the performances on long-tail dataset. Experimental results show that our models significantly outperform all baselines on both tasks, especially with long-tail distribution. It indicates that our models are capable of capturing hierarchical type information which is significant when constructing representations of knowledge graphs. The source code of this paper can be obtained from https://github.com/thunlp/TKRL.
+/static/paper/IJCAI/IJCAI2016_Xie.pdf
+/static/paper/IJCAI/IJCAI2016_Xie.png
