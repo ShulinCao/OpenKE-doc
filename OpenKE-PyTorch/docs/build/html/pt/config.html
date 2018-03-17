@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Config &mdash; OpenKE  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pytorch_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OpenKE  documentation" href="../index.html"/>
+        <link rel="next" title="Models" href="model.html"/>
+        <link rel="prev" title="How to Get Embedding Matrix" href="../notes/matrix.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/OpenKE-logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/data.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/train.html">How to Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/train.html#step-1-import-datasets">Step 1: Import Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/train.html#step-2-set-configure-parameters">Step 2: Set Configure Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/train.html#step-3-export-results">Step 3: Export Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/train.html#step-4-train-models">Step 4: Train Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/test.html">How to Test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/test.html#load-models-from-import-files">Load Models from Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/test.html#read-model-parameters-from-json-files">Read Model Parameters from Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/test.html#manually-load-models">Manually Load Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/matrix.html">How to Get Embedding Matrix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/matrix.html#set-import-files">Set Import Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/matrix.html#read-parameters-from-json-files">Read Parameters From Json Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/matrix.html#manually-load-models-parameters">Manually Load Models Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/matrix.html#get-the-embeddings-after-training">Get the Embeddings After Training</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-statistics-of-dataset">Getting Statistics of Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-configuration-parameters">Setting Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-inpath-and-outpath">Setting Inpath and Outpath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saving-and-loading-models">Saving and Loading Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-models">Setting Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#training-models">Training Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-models">Testing Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model.html#base-model">Base Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#transe">TransE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#transh">TransH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#transr">TransR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#transd">TransD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#rescal">RESCAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#distmult">DistMult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#complex">ComplEx</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenKE</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pt/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-config">
+<span id="config"></span><h1>Config<a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="config.Config">
+<em class="property">class </em><code class="descclassname">config.</code><code class="descname">Config</code><a class="reference internal" href="../_modules/config/Config.html#Config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this class, we set the configuration parameters, adopt C library for data and memory processing. In the following,
+we train models and test models.</p>
+</dd></dl>
+
+<div class="section" id="getting-statistics-of-dataset">
+<h2>Getting Statistics of Dataset<a class="headerlink" href="#getting-statistics-of-dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.get_ent_total">
+<code class="descclassname">Config.</code><code class="descname">get_ent_total</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.get_ent_total"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.get_ent_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets the entity total of knowledge base.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.get_rel_total">
+<code class="descclassname">Config.</code><code class="descname">get_rel_total</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.get_rel_total"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.get_rel_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets the relation total of knowledge base.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="setting-configuration-parameters">
+<h2>Setting Configuration Parameters<a class="headerlink" href="#setting-configuration-parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.set_alpha">
+<code class="descclassname">Config.</code><code class="descname">set_alpha</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_alpha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>This mothod sets the learning rate for gradient descent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – the learning rate.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_margin">
+<code class="descclassname">Config.</code><code class="descname">set_margin</code><span class="sig-paren">(</span><em>margin</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_margin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the margin for the widely used pairwise margin-based ranking loss.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – margin for margin-based ranking function</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_bern">
+<code class="descclassname">Config.</code><code class="descname">set_bern</code><span class="sig-paren">(</span><em>bern</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_bern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_bern" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the strategy for negative sampling.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bern</strong> – “bern” or “unif”</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_dimension">
+<code class="descclassname">Config.</code><code class="descname">set_dimension</code><span class="sig-paren">(</span><em>dim</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_dimension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the entity dimension and  relation dimension at the same time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the dimension of entity and relation.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_ent_dimension">
+<code class="descclassname">Config.</code><code class="descname">set_ent_dimension</code><span class="sig-paren">(</span><em>dim</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_ent_dimension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_ent_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the dimension of entity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the dimension of entity.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_rel_dimension">
+<code class="descclassname">Config.</code><code class="descname">set_rel_dimension</code><span class="sig-paren">(</span><em>dim</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_rel_dimension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_rel_dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the dimension of relation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the dimension of relation.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_train_times">
+<code class="descclassname">Config.</code><code class="descname">set_train_times</code><span class="sig-paren">(</span><em>times</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_train_times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_train_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the rounds for training.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>times</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – rounds for training.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_nbatches">
+<code class="descclassname">Config.</code><code class="descname">set_nbatches</code><span class="sig-paren">(</span><em>nbatches</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_nbatches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_nbatches" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the number of batch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbatches</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – number of batch.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_work_threads">
+<code class="descclassname">Config.</code><code class="descname">set_work_threads</code><span class="sig-paren">(</span><em>threads</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_work_threads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_work_threads" title="Permalink to this definition">¶</a></dt>
+<dd><p>We can use multi-threading trainning for accelaration. This method sets the numebr of threads.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>threads</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – number of working threads.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_ent_neg_rate">
+<code class="descclassname">Config.</code><code class="descname">set_ent_neg_rate</code><span class="sig-paren">(</span><em>rate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_ent_neg_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_ent_neg_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>the number of negatives generated per positive training sample influnces the experiment results.
+This method sets the number of negative entities constructed per positive sample.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the number of negative entities per positive sample.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_rel_neg_rate">
+<code class="descclassname">Config.</code><code class="descname">set_rel_neg_rate</code><span class="sig-paren">(</span><em>rate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_rel_neg_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_rel_neg_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the number of negative relations per positive sample.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the number of negative relations per positive sample.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_lr_decay">
+<code class="descclassname">Config.</code><code class="descname">set_lr_decay</code><span class="sig-paren">(</span><em>lr_decay</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_lr_decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_lr_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the learning rate decay for <code class="docutils literal"><span class="pre">Adagrad</span></code> optim method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lr_decay</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – learning rate decay</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_weight_decay">
+<code class="descclassname">Config.</code><code class="descname">set_weight_decay</code><span class="sig-paren">(</span><em>weight_decay</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_weight_decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_weight_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the weight decay for <code class="docutils literal"><span class="pre">Adagrad</span></code> optim method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>weight_decay</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – weight decay  for <code class="docutils literal"><span class="pre">Adagrad</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_opt_method">
+<code class="descclassname">Config.</code><code class="descname">set_opt_method</code><span class="sig-paren">(</span><em>method</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_opt_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_opt_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the optimizer for your model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>optimizer</strong> – <code class="docutils literal"><span class="pre">SGD</span></code> <code class="docutils literal"><span class="pre">Adagrad</span></code> <code class="docutils literal"><span class="pre">Adam</span></code> and <code class="docutils literal"><span class="pre">Adadelta</span></code> can be chosen for optimizing.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_log_on">
+<code class="descclassname">Config.</code><code class="descname">set_log_on</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_log_on"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_log_on" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets whether to log on the loss value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flag</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – if True, logs on the loss value when training.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setting-inpath-and-outpath">
+<h2>Setting Inpath and Outpath<a class="headerlink" href="#setting-inpath-and-outpath" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.set_in_path">
+<code class="descclassname">Config.</code><code class="descname">set_in_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_in_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_in_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the path of benchmark.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_out_files">
+<code class="descclassname">Config.</code><code class="descname">set_out_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_out_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_out_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets where to emport embedding matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_import_files">
+<code class="descclassname">Config.</code><code class="descname">set_import_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_import_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_import_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model paramters are exported automatically every few rounds.
+This method sets the path to find exported model parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path to automatically exported model parameters.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_export_files">
+<code class="descclassname">Config.</code><code class="descname">set_export_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_export_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_export_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model parameters will be exported to this path automatically.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – files that model parameters will be exported to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.set_export_steps">
+<code class="descclassname">Config.</code><code class="descname">set_export_steps</code><span class="sig-paren">(</span><em>steps</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_export_steps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_export_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets that every few steps the model paramters will be exported automatically.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Models will be exported via torch.save() automatically every few rounds</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="saving-and-loading-models">
+<h2>Saving and Loading Models<a class="headerlink" href="#saving-and-loading-models" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.save_pytorch">
+<code class="descclassname">Config.</code><code class="descname">save_pytorch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.save_pytorch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.save_pytorch" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method saves the model paramters to <code class="docutils literal"><span class="pre">self.exportName</span></code> which was set by <a class="reference internal" href="#config.Config.set_export_files" title="config.Config.set_export_files"><code class="xref py py-func docutils literal"><span class="pre">set_export_files()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.restore_pytorch">
+<code class="descclassname">Config.</code><code class="descname">restore_pytorch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.restore_pytorch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.restore_pytorch" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method restore model through <code class="docutils literal"><span class="pre">torch.load</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.export_variables">
+<code class="descclassname">Config.</code><code class="descname">export_variables</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.export_variables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.export_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method export model paramters through <code class="docutils literal"><span class="pre">torch.save</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – If None, this function euquals to <a class="reference internal" href="#config.Config.save_pytorch" title="config.Config.save_pytorch"><code class="xref py py-func docutils literal"><span class="pre">save_pytorch()</span></code></a>, else save paramters to <code class="docutils literal"><span class="pre">path</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.import_variables">
+<code class="descclassname">Config.</code><code class="descname">import_variables</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.import_variables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.import_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method export model paramters through <code class="docutils literal"><span class="pre">torch.load</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – If None, this function euquals to <a class="reference internal" href="#config.Config.restore_pytorch" title="config.Config.restore_pytorch"><code class="xref py py-func docutils literal"><span class="pre">restore_pytorch()</span></code></a>, else save paramters to <code class="docutils literal"><span class="pre">path</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.get_parameters">
+<code class="descclassname">Config.</code><code class="descname">get_parameters</code><span class="sig-paren">(</span><em>mode='numpy'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.get_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.get_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets the model paramters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mode</strong> – if <code class="docutils literal"><span class="pre">numpy</span></code>, returns model parameters as numpy array, if <code class="docutils literal"><span class="pre">list</span></code>, returns those as list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.save_parameters">
+<code class="descclassname">Config.</code><code class="descname">save_parameters</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.save_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.save_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method save model parameters as json files when training finished.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – if None, save parameters to <code class="docutils literal"><span class="pre">self.out_path</span></code> which was set by <a class="reference internal" href="#config.Config.set_out_files" title="config.Config.set_out_files"><code class="xref py py-func docutils literal"><span class="pre">set_out_files()</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setting-models">
+<h2>Setting Models<a class="headerlink" href="#setting-models" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.set_model">
+<code class="descclassname">Config.</code><code class="descname">set_model</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the traing model and optimizer method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model</strong> – training model. We can choose from :class:<code class="docutils literal"><span class="pre">models.TransE</span></code> :class:<code class="docutils literal"><span class="pre">models.TransH</span></code> :class:<code class="docutils literal"><span class="pre">models.TransR</span></code> :class:<code class="docutils literal"><span class="pre">models.TransD</span></code> :class:<code class="docutils literal"><span class="pre">models.RESCAL</span></code> :class:<code class="docutils literal"><span class="pre">models.DistMult</span></code> and :class:<code class="docutils literal"><span class="pre">models.ComplEx</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.sampling">
+<code class="descclassname">Config.</code><code class="descname">sampling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.sampling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.sampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this function, we choose positive samples and construct negative samples.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="training-models">
+<h2>Training Models<a class="headerlink" href="#training-models" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.run">
+<code class="descclassname">Config.</code><code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this function, we train the model</p>
+</dd></dl>
+
+</div>
+<div class="section" id="testing-models">
+<h2>Testing Models<a class="headerlink" href="#testing-models" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="config.Config.set_test_flag">
+<code class="descclassname">Config.</code><code class="descname">set_test_flag</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.set_test_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.set_test_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets whether we test our model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flag</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – if True, we test the model.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that test_flag must  be set <strong>after</strong> all the other configuration parameters are set.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="config.Config.test">
+<code class="descclassname">Config.</code><code class="descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/Config.html#Config.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#config.Config.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this function, we test the model.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="model.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../notes/matrix.html" class="btn btn-neutral" title="How to Get Embedding Matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, OpenKE Contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90545585-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
