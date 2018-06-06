@@ -85,6 +85,9 @@
             <li>
               <a href="#pretrained-freebase">Freebase</a>
             </li>
+            <li>
+              <a href="#pretrained-xlore">XLORE</a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -109,7 +112,7 @@
               <a class="nav-link js-scroll-trigger" href="/index/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/static/index.html" target="_blank">Documents</a>
+              <a class="nav-link js-scroll-trigger" href="/static/index.html">Documents</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="https://github.com/thunlp/OpenKE" target="_Blank">Github</a>
@@ -190,7 +193,7 @@
                         <li style="font-size:20px;font-weight:300;">ComplEx <a href="http://proceedings.mlr.press/v48/trouillon16.pdf" target="_Blank">[paper]</a></li>
                   </ul>
                   <p style="font-size:20px;font-weight:300;text-align:justify;">                                
-                      We provide <a href="/static/index.html" target="_blank">tutorials</a> for training these models. Additonally, we use some simple examples to show how to build a new model based on OpenKE.
+                      We provide <a href="/index/documentation">tutorials</a> for training these models. Additionally, we use some simple examples to show how to build a new model based on OpenKE.
                   </p>
                   <br/>
                   <a href="https://github.com/thunlp/OpenKE" target="_blank" class="btn btn-secondary">GitHub</a>
@@ -200,9 +203,7 @@
                   <hr/>
                   <br/>
                   <p style="font-size:20px;font-weight:300;text-align:justify;">
-                    KB2E is the early implementation of some knowledge embedding models, and many resources are used in our following works. These codes will be gradually integrated into the new framework OpenKE. This is a basic and stable knowledge graph embedding toolkit, including TransE, TransH, TransR and PTransE. The toolkit implementation comforms to the original paper setting of models, which makes it stable for experiments in research works.
-
-                      
+                    KB2E is the early implementation of some knowledge embedding models, and many resources are used in our following works. <strong> These codes will be gradually integrated into the new framework OpenKE.</strong> This is a basic and stable knowledge graph embedding toolkit, including TransE, TransH, TransR and PTransE. The toolkit implementation conforms to the original paper setting of models, which makes it stable for experiments in research work.
                   </p>
                   <br/>
                   <a href="https://github.com/thunlp/KB2E" target="_blank" class="btn btn-secondary">GitHub</a>
@@ -220,7 +221,7 @@
                   <h2>TensorFlow-TransX</h2>
                   <br/>
                   <p style="font-size:20px;font-weight:300;text-align:justify;">
-                      This is light and simple version of OpenKE based on TensorFlow, including TransE, TransH, TransR and TransD. Similar to Fast-TransX, TensorFlow-TransX is implemented to avoid complicated encapsulation utilizing the same framework of OpenKE.
+                      This is a light and simple version of OpenKE based on TensorFlow, including TransE, TransH, TransR and TransD. Similar to Fast-TransX, TensorFlow-TransX is implemented to avoid complicated encapsulation utilizing the same framework of OpenKE.
                   </p>
                   <br/>
                   <a href="https://github.com/thunlp/TensorFlow-TransX" target="_blank" class="btn btn-secondary">GitHub</a>
@@ -253,7 +254,7 @@
                       <li style="font-size:20px;font-weight:300;">ComplEx <a href="http://proceedings.mlr.press/v48/trouillon16.pdf" target="_Blank">[paper]</a></li>
                 </ul>
                 <p style="font-size:20px;font-weight:300;text-align:justify;">                                
-                    We provide <a href="/static/index.html" target="_blank">tutorials</a> for training these models. Additonally, we use some simple examples to show how to build a new model based on OpenKE.
+                    We provide <a href="/index/documentation">tutorials</a> for training these models. Additonally, we use some simple examples to show how to build a new model based on OpenKE.
                 </p>
                 <br/>
                 <a href="https://github.com/thunlp/OpenKE" target="_blank" class="btn btn-secondary">GitHub</a>
@@ -563,7 +564,7 @@
                     </li>
                     <br/>
                     <li style="font-size:20px;font-weight:300;">
-                        <b class="media-heading">Triple2id :</b> The mapping from knowledge triples(fact) of knowledge graphs to their corresponding serial numbers. For each line, there is an triple and its serial number split by a tab.
+                        <b class="media-heading">Triple2id :</b> The mapping from knowledge triples(fact) of knowledge graphs to their corresponding serial numbers. For each line, there is a triple and its serial number split by a tab.
                     </li>
                     <br/>
                     <li style="font-size:20px;font-weight:300;">
@@ -640,7 +641,36 @@
                                     <td alignment="left"> List of the triple ids </td>
                                     <td alignment="left"> 6GB </td>
                                 </tr>
-                            </tbody>
+
+
+                                <tr>
+                                    <td id="pretrained-xlore" rowspan="5" alignment="center" style="vertical-align:middle;">XLORE</td>
+                                    <td>Embeddings of the entities</td>
+                                    <td> < 4GB </td>
+                                    <td rowspan="5" alignment="center" style="vertical-align:middle;">
+                                        <a href = "/download/xlore">
+                                            Download
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> Embeddings of the relations </td>
+                                    <td alignment="left"> < 60MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the entity ids </td>
+                                    <td alignment="left"> < 500MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the relation ids </td>
+                                    <td alignment="left"> < 2MB </td>
+                                </tr>
+                                <tr>
+                                    <td alignment="left"> List of the triple ids </td>
+                                    <td alignment="left"> < 1GB </td>
+                                </tr>
+
+                             </tbody>
                         </table>
                         <br/>
 
@@ -704,7 +734,16 @@ int main() {
                         </a> 
                         for more information.
                     </li>
-                
+
+                    <br/>
+                    <li style="font-size:20px;font-weight:300;">
+                        If necessary, you can click
+                        <a href = "http://xlore.org/index.html" target="_blank" style="text-decoration:none; hover{TEXT-DECORATION:underline};">
+                            XLORE 
+                        </a> 
+                        for more information.
+                    </li>
+
             </div>
         </div>
       

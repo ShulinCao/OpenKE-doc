@@ -17,7 +17,7 @@ paperList = []
 def PaperListInit():
 	print "Loading the papers list..."
 	global paperList
-	f = open("static/paper/list.txt")
+	f = open("/data/disk2/private/csl/docs/openke/static/paper/list.txt")
 	while (True):
 		content = f.readline()
 		if (content == ""):
@@ -38,7 +38,9 @@ def PaperListInit():
 	f.close()
 
 app = Flask(__name__)
-
+app.jinja_env.variable_start_string = '{{{{'
+app.jinja_env.variable_end_string = '}}}}'
+PaperListInit()
 @app.route('/')
 def root_home():
 	global paperList
@@ -77,6 +79,11 @@ def index_embeddings():
 @app.route('/index/toolkits')
 def index_toolkits():
 	return render_template('toolkits.html')
+
+
+@app.route('/index/documentation')
+def index_documentation():
+	return render_template('documentation.html')
 
 @app.route('/index/contact')
 def index_contact():
@@ -121,8 +128,8 @@ def sendMessage():
 			info["telephone"] = s["telephone"]
 			info["address"] = s["address"]
 			info["time"] = time.strftime("%Y-%m-%d %H:%I:%S", time.localtime(time.time())) 
-			print info
-			# download_collection.insert(info)
+			#print info
+			download_collection.insert(info)
 		except Exception, err:
 			print "DB Error!"
 		return render_template("download.html")
